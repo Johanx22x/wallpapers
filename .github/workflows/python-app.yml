@@ -9,7 +9,7 @@ on:
     branches: [ "master" ]
 
 permissions:
-  contents: read
+  contents: read/write
 
 jobs:
   build:
@@ -35,4 +35,4 @@ jobs:
         git config --local user.name "GitHub Action"
         git add .
         git commit -m "Update READMEs"
-        git push https://${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
+        git push

@@ -29,3 +29,11 @@ jobs:
     - name: Generate READMEs
       run: |
         python generate_readme.py
+    - name: Publish changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "Update READMEs"
+        git push
+

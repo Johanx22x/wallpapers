@@ -12,7 +12,5 @@ Repository containing wallpapers for my desktop.
 
 [minimal](minimal)
 
-[.github](.github)
-
 [anime](anime)
 

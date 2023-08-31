@@ -2,13 +2,15 @@
 
 Repository containing wallpapers for my desktop.
 
-[japan](japan/README.md)
+---
 
-[comic](comic/README.md)
+[japan](japan)
 
-[anime](anime/README.md)
+[comic](comic)
 
-[minimal](minimal/README.md)
+[anime](anime)
 
-[games](games/README.md)
+[minimal](minimal)
+
+[games](games)
 

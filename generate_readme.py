@@ -4,6 +4,20 @@
 
 import os
 import sys
+from PIL import Image
+from fractions import Fraction
+
+def get_image_metadata(image_path):
+    try:
+        image = Image.open(image_path)
+        width, height = image.size
+        aspect_ratio = width / height
+        return {
+            "resolution": (width, height),
+            "aspect_ratio": aspect_ratio
+        }
+    except Exception as e:
+        return None
 
 # Get the current directory
 current_dir = os.getcwd()
@@ -19,13 +33,13 @@ if "README.md" in subdirectories:
 
 # Generate a main README.md file 
 # containing the subdirectories 
-# using format: [subdirectory](/path/to/subdirectory/README.md)
+# using format: [subdirectory](/path/to/subdirectory)
 print("Generating main README.md file...")
 readme_file = open("README.md", "w")
 readme_file.write("# Wallpapers\n\n")
-readme_file.write("Repository containing wallpapers for my desktop.\n\n")
+readme_file.write("Repository containing wallpapers for my desktop.\n\n---\n\n")
 for subdirectory in subdirectories:
-    readme_file.write("[%s](%s)\n\n" % (subdirectory, subdirectory + "/README.md"))
+    readme_file.write("[%s](%s)\n\n" % (subdirectory, subdirectory))
 readme_file.close()
 
 # For each subdirectory, generate a README.md file 
@@ -49,6 +63,9 @@ for subdirectory in subdirectories:
     for file in files:
         readme_file.write("## " + file + "\n\n")
         readme_file.write("![%s](%s)\n\n" % (file, file))
+        metadata = get_image_metadata(subdirectory + "/" + file)
+        readme_file.write("- Resolution: %s\n" % str(metadata["resolution"]))
+        readme_file.write("- Aspect ratio: %s\n\n" % str(Fraction(metadata["aspect_ratio"]).limit_denominator()))
 
     # Close the README.md file
     readme_file.close()

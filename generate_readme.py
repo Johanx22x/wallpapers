@@ -64,6 +64,8 @@ for subdirectory in subdirectories:
         readme_file.write("## " + file + "\n\n")
         readme_file.write("![%s](%s)\n\n" % (file, file))
         metadata = get_image_metadata(subdirectory + "/" + file)
+        if metadata is None:
+            continue
         readme_file.write("- Resolution: %s\n" % str(metadata["resolution"]))
         readme_file.write("- Aspect ratio: %s\n\n" % str(Fraction(metadata["aspect_ratio"]).limit_denominator()))
 

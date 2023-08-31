@@ -48,7 +48,7 @@ for subdirectory in subdirectories:
     # Write the images in the subdirectory
     for file in files:
         readme_file.write("## " + file + "\n\n")
-        readme_file.write("![%s](%s)\n\n" % (file, subdirectory + "/" + file))
+        readme_file.write("![%s](%s)\n\n" % (file, file))
 
     # Close the README.md file
     readme_file.close()

@@ -7,6 +7,7 @@ import sys
 from PIL import Image
 from fractions import Fraction
 
+
 def get_image_metadata(image_path):
     try:
         image = Image.open(image_path)
@@ -20,7 +21,8 @@ def get_image_metadata(image_path):
         return None
 
 # Get the current directory
-current_dir = os.getcwd() + "/../"
+current_dir = os.path.abspath(__file__)
+current_dir = os.path.dirname(current_dir)
 
 # Get the list of subdirectories, not recursively
 subdirectories = os.listdir(current_dir)
@@ -28,6 +30,7 @@ subdirectories = os.listdir(current_dir)
 # Remove the script file from the list
 subdirectories.remove("generate_readme.py")
 subdirectories.remove(".git")
+subdirectories.remove(".github")
 if "README.md" in subdirectories:
     subdirectories.remove("README.md")
 
@@ -35,7 +38,7 @@ if "README.md" in subdirectories:
 # containing the subdirectories 
 # using format: [subdirectory](/path/to/subdirectory)
 print("Generating main README.md file...")
-readme_file = open("README.md", "w")
+readme_file = open(current_dir + "/README.md", "w")
 readme_file.write("# Wallpapers\n\n")
 readme_file.write("Repository containing wallpapers for my desktop.\n\n---\n\n")
 for subdirectory in subdirectories:
@@ -49,12 +52,12 @@ for subdirectory in subdirectories:
     print("Generating README.md file for %s..." % subdirectory)
 
     # Get the list of files in the subdirectory
-    files = os.listdir(subdirectory)
+    files = os.listdir(current_dir + "/" + subdirectory)
     if "README.md" in files:
         files.remove("README.md")
 
     # Open the README.md file
-    readme_file = open(subdirectory + "/README.md", "w")
+    readme_file = open(current_dir + "/" + subdirectory + "/README.md", "w")
 
     # Write the title of the subdirectory
     readme_file.write("# " + subdirectory + "\n\n")

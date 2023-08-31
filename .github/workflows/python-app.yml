@@ -9,7 +9,7 @@ on:
     branches: [ "master" ]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -36,4 +36,3 @@ jobs:
         git add .
         git commit -m "Update READMEs"
         git push
-

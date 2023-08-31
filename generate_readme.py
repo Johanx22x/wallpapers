@@ -20,7 +20,7 @@ def get_image_metadata(image_path):
         return None
 
 # Get the current directory
-current_dir = os.getcwd()
+current_dir = os.getcwd() + "/../"
 
 # Get the list of subdirectories, not recursively
 subdirectories = os.listdir(current_dir)

@@ -1,0 +1,21 @@
+{
+  "name": "wallpapers",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A curated wallpaper gallery",
+  "scripts": {
+    "dev": "node scripts/generate-thumbnails.mjs && astro dev",
+    "build": "node scripts/generate-thumbnails.mjs && astro build",
+    "preview": "astro preview",
+    "thumbnails": "node scripts/generate-thumbnails.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Johanx22x/wallpapers.git"
+  },
+  "dependencies": {
+    "astro": "^5.17.2",
+    "gsap": "^3.14.2",
+    "sharp": "^0.34.5"
+  }
+}

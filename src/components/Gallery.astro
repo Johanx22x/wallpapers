@@ -1,0 +1,22 @@
+---
+import WallpaperCard from './WallpaperCard.astro';
+import wallpapers from '../data/wallpapers.json';
+---
+
+<section class="gallery" id="gallery">
+  {
+    wallpapers.map((wp, i) => (
+      <WallpaperCard
+        filename={wp.filename}
+        width={wp.width}
+        height={wp.height}
+        alt={wp.alt}
+        index={i}
+      />
+    ))
+  }
+</section>
+
+<style is:global>
+  @import '../styles/gallery.css';
+</style>

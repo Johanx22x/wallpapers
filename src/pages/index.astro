@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Gallery from '../components/Gallery.astro';
+import Lightbox from '../components/Lightbox.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <Gallery />
+  <Footer />
+  <Lightbox />
+</Layout>
+
+<script>
+  import { initAnimations } from '../scripts/gsap-animations';
+  import { initLightbox } from '../scripts/lightbox';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initAnimations();
+    initLightbox();
+  });
+</script>

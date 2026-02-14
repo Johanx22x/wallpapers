@@ -1,0 +1,36 @@
+---
+interface Props {
+  filename: string;
+  width: number;
+  height: number;
+  alt: string;
+  index: number;
+}
+
+const { filename, width, height, alt, index } = Astro.props;
+const name = filename.replace(/\.[^.]+$/, '');
+const thumbSrc = `/thumbs/${name}.webp`;
+const fullSrc = `/wallpapers/${filename}`;
+---
+
+<div
+  class="gallery-card"
+  data-index={index}
+  data-src={fullSrc}
+  data-filename={filename}
+  data-width={width}
+  data-height={height}
+  data-alt={alt}
+>
+  <img
+    src={thumbSrc}
+    alt={alt}
+    loading="lazy"
+    decoding="async"
+    style={`aspect-ratio: ${width} / ${height};`}
+  />
+  <div class="overlay">
+    <span class="name">{alt}</span>
+    <span class="resolution">{width} × {height}</span>
+  </div>
+</div>

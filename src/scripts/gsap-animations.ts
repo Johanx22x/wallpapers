@@ -45,11 +45,13 @@ function headerParallax() {
 
 /** Gallery cards batch reveal on scroll */
 function galleryReveal() {
+  gsap.set('.gallery-card', { opacity: 0, y: 40 });
+
   ScrollTrigger.batch('.gallery-card', {
     onEnter: (batch) => {
-      gsap.from(batch, {
-        y: 40,
-        opacity: 0,
+      gsap.to(batch, {
+        y: 0,
+        opacity: 1,
         duration: 0.8,
         stagger: 0.1,
         ease: 'power2.out',
